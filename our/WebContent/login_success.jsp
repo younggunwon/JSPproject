@@ -11,7 +11,8 @@
 <title>Insert title here</title>
 <SCRIPT LANGUAGE="JavaScript">
 function reset() {
-	location.href="reset.jsp";
+	browsing_window = window.open("reset.jsp", "_resetInfo","height=500,width=500, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
+	browsing_window.focus();
 }
 function logout() {
 	location.href="logout.jsp";
@@ -27,18 +28,17 @@ function logout() {
 	Cookie cookie[] = request.getCookies();
 	if(cookie != null) {
 		for(int i = 0; i < cookie.length; i++) {
-			if(cookie[i].getName().equals("name")) {
-				name = URLDecoder.decode(cookie[i].getValue(), "utf-8");
-			} else if(cookie[i].getName().equals("major")) {
-				major = URLDecoder.decode(cookie[i].getValue(), "utf-8");
-			} else if(cookie[i].getName().equals("subject")) {
-				subject = URLDecoder.decode(cookie[i].getValue(), "utf-8");
-			}
+	if(cookie[i].getName().equals("name")) {
+		name = URLDecoder.decode(cookie[i].getValue(), "utf-8");
+	} else if(cookie[i].getName().equals("major")) {
+		major = URLDecoder.decode(cookie[i].getValue(), "utf-8");
+	} else if(cookie[i].getName().equals("subject")) {
+		subject = URLDecoder.decode(cookie[i].getValue(), "utf-8");
+	}
 		}
 	}
 	try {
-	if(session.getAttribute("LOGIN").equals("YES")) {
-		
+	if (session.getAttribute("LOGIN").equals("YES")) {
 %>
 
 <TABLE align=center width='300' border='0' cellpadding='10' cellspacing='0'>
@@ -49,7 +49,7 @@ function logout() {
 </TR>
 <TR>
 	<TD bgcolor='cccccc' align='center' colspan="2">
-		<font size='2'><%=major %> <%=subject %></font>
+		<font size='2'><%=major %> / <%=subject %></font>
 	</TD>
 </TR>
 <TR>
@@ -68,8 +68,9 @@ function logout() {
 		response.sendRedirect("login.jsp");
 	}
 	}catch(Exception e) {
-		System.out.print("예외처리");
+		response.sendRedirect("login.jsp");
 	}
+	
 %>
 </body>
 </html>
