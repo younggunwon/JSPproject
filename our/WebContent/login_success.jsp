@@ -53,7 +53,7 @@ function logout() {
 	</TD>
 </TR>
 <TR>
-	<TD bgcolor='cccccc' align='right'>
+	<TD bgcolor='cccccc' align='center'>
 		<input type='button' value='개인정보 수정' onclick="reset()">
 	</TD>
 	<TD bgcolor='cccccc' align='center'>

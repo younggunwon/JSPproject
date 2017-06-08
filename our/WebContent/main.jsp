@@ -7,11 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	
+
+	
 <Table border = '0' >
 	<TR>
 		<TD bgcolor="#00FFFF" width="300" height="200">
+			<%try{
+				if(session.getAttribute("LOGIN").equals("YES")) { %>
+			<jsp:include page="login_success.jsp" flush="false"></jsp:include>
+			<%
+				} else { %>
+				<jsp:include page="login.jsp" flush="false"></jsp:include>
+				<%
+				}
+			}catch(Exception e) { %>
+				<jsp:include page="login.jsp" flush="false"></jsp:include>
+				<%
+			}	%>
 			
-			<jsp:include page="login.jsp" flush="false"></jsp:include>
 		</TD>
 		<TD bgcolor="#FFFFFF" width="700" height="200">
 		sdfsfdsf

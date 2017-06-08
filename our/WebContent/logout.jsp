@@ -14,7 +14,7 @@
 	for(Cookie c : cookie) {
 		c.setMaxAge(0);
 	}
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("main.jsp");
 %>
 </body>
 </html>

@@ -49,7 +49,7 @@ if (id == ""){
 
 	Statement stmt = conn.createStatement();
 	
-	String strSQL = "SELECT id FROM test97 where id='" + id + "'";
+	String strSQL = "SELECT id FROM test6 where id='" + id + "'";
 	ResultSet rs = stmt.executeQuery(strSQL);
 
 

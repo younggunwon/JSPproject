@@ -46,7 +46,7 @@
 
 					Statement stmt = conn.createStatement();
 
-					String strSQL = "SELECT * FROM test97 where id='" + id + "'";
+					String strSQL = "SELECT * FROM test6 where id='" + id + "'";
 					ResultSet rs = stmt.executeQuery(strSQL);
 
 					if (!rs.next()) {
@@ -103,7 +103,7 @@
 									cookie[i].setPath("/");
 									response.addCookie(cookie[i]);
 								}
-								response.sendRedirect("login_success.jsp");
+								response.sendRedirect("main.jsp");
 							}
 						}
 					}
