@@ -5,12 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+
 </head>
 <body>
+<%
+	String alert = request.getParameter("alert");
+	if(alert != null) {
+		if(alert.equals("cantId")) {
+%>			<script>alert("ID를 다시 확인해주세요.");</script>
+<%
+		} else if(alert.equals("cantPass")) {
+%>			<script>alert("비밀번호를 다시 확인해주세요.");</script>
+<%  	}
+	}%>
 
-	
-
-	
 <Table border = '0' >
 	<TR>
 		<TD bgcolor="#00FFFF" width="300" height="200">
@@ -20,7 +28,7 @@
 			<%
 				} else { %>
 				<jsp:include page="login.jsp" flush="false"></jsp:include>
-				<%
+				<% 
 				}
 			}catch(Exception e) { %>
 				<jsp:include page="login.jsp" flush="false"></jsp:include>
