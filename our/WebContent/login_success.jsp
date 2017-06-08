@@ -28,13 +28,13 @@ function logout() {
 	Cookie cookie[] = request.getCookies();
 	if(cookie != null) {
 		for(int i = 0; i < cookie.length; i++) {
-	if(cookie[i].getName().equals("name")) {
-		name = URLDecoder.decode(cookie[i].getValue(), "utf-8");
-	} else if(cookie[i].getName().equals("major")) {
-		major = URLDecoder.decode(cookie[i].getValue(), "utf-8");
-	} else if(cookie[i].getName().equals("subject")) {
-		subject = URLDecoder.decode(cookie[i].getValue(), "utf-8");
-	}
+			if(cookie[i].getName().equals("name")) {
+				name = URLDecoder.decode(cookie[i].getValue(), "utf-8");
+			} else if(cookie[i].getName().equals("major")) {
+				major = URLDecoder.decode(cookie[i].getValue(), "utf-8");
+			} else if(cookie[i].getName().equals("subject")) {
+				subject = URLDecoder.decode(cookie[i].getValue(), "utf-8");
+			}
 		}
 	}
 	try {

@@ -55,7 +55,7 @@
 				<TD align="center"><font size='2'>회원 ID가 아닙니다.</font></TD>
 			</TR>
 			<TR>
-				<TD align="center"><a href="login.jsp">[로그인]</a></TD>
+				<TD align="center"><a href="main.jsp">[로그인]</a></TD>
 			</TR>
 			<%
 				} else {
@@ -66,6 +66,9 @@
 						String logMajor = rs.getString("major");
 						String logSubject = rs.getString("subject");
 						String logEmail = rs.getString("email");
+						String logZip = rs.getString("zip");
+						String logAddress1 = rs.getString("address1");
+						String logAddress2 = rs.getString("address2");
 
 						if (!id.equals(logId)) {
 			%>
@@ -74,7 +77,7 @@
 						<%=logId%></font></TD>
 			</TR>
 			<TR>
-				<TD align="center"><a href="login.jsp">[로그인]</a></TD>
+				<TD align="center"><a href="main.jsp">[로그인]</a></TD>
 			</TR>
 			<%
 				} else {
@@ -85,20 +88,23 @@
 				<TD align='center'><font size=2>비밀번호가 일치하지 않습니다.</font></TD>
 			</TR>
 			<TR>
-				<TD align='center'><a href="login.jsp">[로그인]</a></TD>
+				<TD align='center'><a href="main.jsp">[로그인]</a></TD>
 			</TR>
 
 			<%
 				} else { //아이디 이름 부 과 이메일
 								session.setAttribute("LOGIN", login);
-								Cookie cookie[] = new Cookie[5];
+								Cookie cookie[] = new Cookie[8];
 								cookie[0] = new Cookie("id", URLEncoder.encode(logId, "utf-8"));
 								cookie[1] = new Cookie("name", URLEncoder.encode(logName, "utf-8"));
 								cookie[2] = new Cookie("major", URLEncoder.encode(logMajor, "utf-8"));
 								cookie[3] = new Cookie("subject", URLEncoder.encode(logSubject, "utf-8"));
 								cookie[4] = new Cookie("email", URLEncoder.encode(logEmail, "utf-8"));
+								cookie[5] = new Cookie("zip", URLEncoder.encode(logZip, "utf-8"));
+								cookie[6] = new Cookie("address1", URLEncoder.encode(logAddress1, "utf-8"));
+								cookie[7] = new Cookie("address2", URLEncoder.encode(logAddress2, "utf-8"));
 
-								for (int i = 0; i < 5; i++) {
+								for (int i = 0; i < 8; i++) {
 									cookie[i].setMaxAge(30 * 60);
 									cookie[i].setPath("/");
 									response.addCookie(cookie[i]);
