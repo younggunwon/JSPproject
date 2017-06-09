@@ -61,7 +61,7 @@
 				cookie[i].setPath("/");
 				response.addCookie(cookie[i]);
 			}
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("../main.jsp");
 		}
 	}
 	%>

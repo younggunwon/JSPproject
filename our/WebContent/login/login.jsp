@@ -24,14 +24,14 @@ Member.submit();
 
 function input_member() 
 {
-browsing_window = window.open("member_input.jsp", "_inputMember","height=550,width=500, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
+browsing_window = window.open("memberSet/member_input.jsp", "_inputMember","height=550,width=500, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
 browsing_window.focus();
 }
 </SCRIPT>
 </head>
 <body>
 
-<FORM Name='Member' Method='post' Action='login_ok.jsp'>
+<FORM Name='Member' Method='post' Action='login/login_ok.jsp'>
 
 <TABLE align=center width='300' border='0' cellpadding='10' cellspacing='0'>
 <TR>

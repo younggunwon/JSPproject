@@ -11,11 +11,11 @@
 <title>Insert title here</title>
 <SCRIPT LANGUAGE="JavaScript">
 function reset() {
-	browsing_window = window.open("reset.jsp", "_resetInfo","height=500,width=500, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
+	browsing_window = window.open("memberSet/reset.jsp", "_resetInfo","height=500,width=500, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
 	browsing_window.focus();
 }
 function logout() {
-	location.href="logout.jsp";
+	location.href="login/logout.jsp";
 }
 </SCRIPT>  
 </head>

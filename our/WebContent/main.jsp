@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@page import="java.net.URLDecoder"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +10,8 @@
 </head>
 <body>
 <%
+
+	String num = request.getParameter("num");
 	String menu = request.getParameter("menu");
 	String subMenu = request.getParameter("subMenu");
 	String alert = request.getParameter("alert");
@@ -55,54 +58,55 @@
 	<TD width="100%" height="100%" align="center">
 <Table border = '0'>
 	<TR>
-		<TD bgcolor="#00FFFF" width="300" height="200">
+		<TD  width="300" height="200">
 			<%try{
 				if(session.getAttribute("LOGIN").equals("YES")) { %>
-			<jsp:include page="login_success.jsp" flush="false"></jsp:include>
+			<jsp:include page="login/login_success.jsp" flush="false"></jsp:include>
 			<%
 				} else { %>
-				<jsp:include page="login.jsp" flush="false"></jsp:include>
+				<jsp:include page="login/login.jsp" flush="false"></jsp:include>
 				<% 
 				}
 			}catch(Exception e) { %>
-				<jsp:include page="login.jsp" flush="false"></jsp:include>
+				<jsp:include page="login/login.jsp" flush="false"></jsp:include>
 				<%
 			}	%>
 			
 		</TD>
-		<TD bgcolor="#FFFFFF" width="700" height="200">
-			<jsp:include page="menu.jsp" flush="false"></jsp:include>
+		<TD  width="700" height="200">
+			<jsp:include page="menu/menu.jsp" flush="false"></jsp:include>
 		</TD>
 	</TR>
 	<TR>
-		<TD bgcolor="#00FF00" width="300" height="600">
-			<jsp:include page="subMenu.jsp" flush="false">
+		<TD  width="300" height="600">
+			<jsp:include page="menu/subMenu.jsp" flush="false">
 				<jsp:param name="menu" value="<%=menu%>" />
 			</jsp:include>
 		</TD>
-		<TD bgcolor="#0000FF" width="600" height="600">
+		<TD width="600" height="600" valign="top" align="center">
 			<%
 			if(menu.equals("info")) {
 			%>
-				<jsp:include page="info.jsp" flush="false">
+				<jsp:include page="menu/info.jsp" flush="false">
 					<jsp:param name="subMenu" value="<%=subMenu%>" />
 				</jsp:include>
 			<%
 			} else if(menu.equals("major")) {
 			%>
-				<jsp:include page="major.jsp" flush="false">
+				<jsp:include page="menu/major.jsp" flush="false">
 					<jsp:param name="subMenu" value="<%=subMenu%>" />
 				</jsp:include>
 			<%
 			} else if(menu.equals("noti")) {
 			%>
-				<jsp:include page="noti.jsp" flush="false">
+				<jsp:include page="menu/noti.jsp" flush="false">
 					<jsp:param name="subMenu" value="<%=subMenu%>" />
+					<jsp:param name="num" value="<%=num%>" />
 				</jsp:include>
 			<%
 			} else if(menu.equals("free")) {
 			%>
-				<jsp:include page="free.jsp" flush="false">
+				<jsp:include page="menu/free.jsp" flush="false">
 					<jsp:param name="subMenu" value="<%=subMenu%>" />
 				</jsp:include>
 			<%

@@ -7,26 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-	String subMenu = request.getParameter("subMenu");
-	if(subMenu.equals("intro")) {
-%>
-	<img src="D:/kim/web1_6/our/WebContent/img/info.png" alt="ÃÑÀå ¼Ò°³">
-<%
-	}else if(subMenu.equals("ide")) {
-%>
 
-<%
-	}else if(subMenu.equals("simbol")) {
-%>
-
-<%
-	}else if(subMenu.equals("road")) {
-%>
-
-<%
-	}
-%>
-<%=subMenu %>
 </body>
 </html>

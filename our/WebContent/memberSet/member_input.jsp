@@ -149,7 +149,7 @@ Member_Input.juminnum2.focus();
 
 function ZipCode() 
 {
-browsing_window = window.open("zipcode.jsp", "_zipinput","height=300,width=600, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
+browsing_window = window.open("../address/zipcode.jsp", "_zipinput","height=300,width=600, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
 browsing_window.focus();
 }
 function Check_id() 
