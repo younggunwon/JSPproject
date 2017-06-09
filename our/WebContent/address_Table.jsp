@@ -19,7 +19,7 @@
 		Connection con = null;
 		Statement stmt = null ;
 	  
-		String sql = "create table tblZipCode( ";
+		String sql = "create table tblZipCode6( ";
 		 sql = sql+ "우편번호 varchar(10), ";
 	     sql = sql+ "시도 varchar(10), ";
 	     sql = sql+ "시군구 varchar(10), ";

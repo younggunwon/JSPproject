@@ -19,7 +19,7 @@
 		Connection con = null;
 		Statement stmt = null ;
 	  
-		String sql = "create table test6( ";
+		String sql = "create table user6( ";
 		 sql = sql+ "id varchar(20), ";
 	     sql = sql+ "name varchar(20), ";
 	     sql = sql+ "pass varchar(20), ";

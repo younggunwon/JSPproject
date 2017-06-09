@@ -23,7 +23,7 @@
 
 	Statement stmt = conn.createStatement();
 
-	String strSQL = "SELECT * FROM test6 where id='" + id + "'";
+	String strSQL = "SELECT * FROM user6 where id='" + id + "'";
 	ResultSet rs = stmt.executeQuery(strSQL);
 
 	if (!rs.next()) {	

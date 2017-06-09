@@ -42,7 +42,7 @@ try {
 	Statement stmt = conn.createStatement();
 	
 	// 우편번호 테이블 tblZipCode에서 검색어에 해당하는 '동'의 전체주소를 검색한다.
-	String strSQL = "SELECT * FROM tblZipCode where 읍면동 like '%" + fdong + "%'";
+	String strSQL = "SELECT * FROM tblZipCode6 where 읍면동 like '%" + fdong + "%'";
 	ResultSet rs = stmt.executeQuery(strSQL);
 	
 	// 쿼리문으로 검색된 결과가 없을 경우 아래와 같은 문장을 출력한다.

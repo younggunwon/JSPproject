@@ -24,7 +24,7 @@ Member.submit();
 
 function input_member() 
 {
-browsing_window = window.open("member_input.jsp", "_inputMember","height=500,width=500, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
+browsing_window = window.open("member_input.jsp", "_inputMember","height=550,width=500, menubar=no,directories=no,resizable=no,status=no,scrollbars=yes");
 browsing_window.focus();
 }
 </SCRIPT>

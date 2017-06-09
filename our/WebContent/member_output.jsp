@@ -33,10 +33,10 @@ Connection conn = DriverManager.getConnection(dbURL,"root","dongyang");
 
 Statement stmt = conn.createStatement();
 
-String strSQL = "SELECT id FROM test6 where id='" + id + "'";
+String strSQL = "SELECT id FROM user6 where id='" + id + "'";
 ResultSet rs = stmt.executeQuery(strSQL);
 
-strSQL = "INSERT INTO test6(id,pass,name,juminnum1, juminnum2,zip,address1,address2,phone,email,major,subject)";
+strSQL = "INSERT INTO user6(id,pass,name,juminnum1, juminnum2,zip,address1,address2,phone,email,major,subject)";
 strSQL = strSQL +  "VALUES('" + id + "', '" + pass + "', '" + name + "', '" + juminnum1 + "',";
 strSQL = strSQL +  "'" + juminnum2 + "', '" + zip + "', '" + address1 + "',"; 
 strSQL = strSQL +  "'" + address2 + "', '" + phone + "', '" + email + "',";

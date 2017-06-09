@@ -20,7 +20,7 @@ Connection con = DriverManager.getConnection(dbURL, "root", "dongyang");
 
 PreparedStatement pstmt1 = null, pstmt2 = null;
 
-String strSQL ="INSERT INTO tblZipCode(우편번호,시도,시군구,읍면동,번지)";
+String strSQL ="INSERT INTO tblZipCode6(우편번호,시도,시군구,읍면동,번지)";
 strSQL = strSQL + "VALUES (?, ?, ?,?,?)";
 pstmt2 = con.prepareStatement(strSQL);
 

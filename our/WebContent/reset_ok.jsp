@@ -31,12 +31,12 @@ Connection conn = DriverManager.getConnection(dbURL,"root","dongyang");
 
 Statement stmt = conn.createStatement();
 
-String strSQL = "UPDATE test6 set zip = '" + zip + "', address1 = '" + address1 + "', address2 = '" + address2 + "',";
+String strSQL = "UPDATE user6 set zip = '" + zip + "', address1 = '" + address1 + "', address2 = '" + address2 + "',";
 strSQL = strSQL + "phone = '" + phone + "', email = '" + email + "', major = '" + major + "', subject = '" + subject + "',";
 strSQL = strSQL + "pass = '" + pass + "' where id = '" + id + "'";
 stmt.executeUpdate(strSQL);
 
-String strSQL2 = "SELECT * FROM test6 where id='" + id + "'";
+String strSQL2 = "SELECT * FROM user6 where id='" + id + "'";
 ResultSet rs = stmt.executeQuery(strSQL2);
 rs.next();
 
