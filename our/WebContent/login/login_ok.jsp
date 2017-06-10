@@ -27,7 +27,7 @@
 	ResultSet rs = stmt.executeQuery(strSQL);
 
 	if (!rs.next()) {	
-		response.sendRedirect("main.jsp?alert=cantId ");
+		response.sendRedirect("../main.jsp?alert=cantId ");
 	} else {
 
 		String logId = rs.getString("id");
@@ -42,9 +42,10 @@
 		String logPhone = rs.getString("phone");
 
 		if (!pass.equals(logPass)) {
-			response.sendRedirect("main.jsp?alert=cantPass ");
+			response.sendRedirect("../main.jsp?alert=cantPass ");
 		} else {
 			session.setAttribute("LOGIN", login);
+			session.setMaxInactiveInterval(60*60);
 			Cookie cookie[] = new Cookie[9];
 			cookie[0] = new Cookie("id", URLEncoder.encode(logId, "utf-8"));
 			cookie[1] = new Cookie("name", URLEncoder.encode(logName, "utf-8"));

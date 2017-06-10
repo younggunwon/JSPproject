@@ -53,9 +53,9 @@ String strSQL = "";
 ResultSet rs = null;
 
 if (key==null || keyword==null){
-	strSQL = "SELECT count(*) FROM noti";	//tblboard의 모든 글을 카운트 한다.
+	strSQL = "SELECT count(*) FROM noti6";	//tblboard의 모든 글을 카운트 한다.
 }else{
-	strSQL = "SELECT count(*) FROM noti WHERE " + key + " like '%" + keyword + "%'";
+	strSQL = "SELECT count(*) FROM noti6 WHERE " + key + " like '%" + keyword + "%'";
 }
 rs = stmt.executeQuery(strSQL);
 rs.next();
@@ -86,10 +86,10 @@ lastRow = rs.getInt(1);	//총 글의 개수
 <%
 if(lastRow > 0) {	//글의 개수가 0보다 크면 글 보여주기
 	if(key==null || keyword==null){
-		strSQL = "SELECT * FROM noti WHERE num BETWEEN " + startRow + " and " + endRow + " ORDER BY num DESC";
+		strSQL = "SELECT * FROM noti6 WHERE num BETWEEN " + startRow + " and " + endRow + " ORDER BY num DESC";
 		rs = stmt.executeQuery(strSQL);
 	} else {
-		strSQL = "SELECT * FROM noti WHERE " + key + " like '%" + keyword + "%' ORDER BY num DESC";
+		strSQL = "SELECT * FROM noti6 WHERE " + key + " like '%" + keyword + "%' ORDER BY num DESC";
 		rs = stmt.executeQuery(strSQL);
 	}
 

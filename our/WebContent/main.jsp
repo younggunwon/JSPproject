@@ -9,7 +9,11 @@
 
 </head>
 <body>
-<%
+<%	
+	if(session.getAttribute("LOGIN") == null) {
+		session.setAttribute("LOGIN", "NO");
+		session.setMaxInactiveInterval(60*60);
+	}
 
 	String num = request.getParameter("num");
 	String menu = request.getParameter("menu");

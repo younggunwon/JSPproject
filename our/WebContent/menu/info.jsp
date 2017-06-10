@@ -11,23 +11,23 @@
 	String subMenu = request.getParameter("subMenu");
 	if(subMenu.equals("intro")) {
 %>
-	<!-- <img src="D:/kim/web1_6/our/WebContent/img/info.png" alt="ÃÑÀå ¼Ò°³"> -->
-	<img src="C:/Users/219/Documents/GitHub/JSPproject/our/WebContent/img/intro.PNG" alt="ÃÑÀå ¼Ò°³">
+	<!-- <img src="D:/kim/web1_6/WebContent/img/info.png" alt="ÃÑÀå ¼Ò°³"> -->
+	<img src="D:/kim/web1_6/WebContent/img/intro.PNG" alt="ÃÑÀå ¼Ò°³">
 	
 <%
 	}else if(subMenu.equals("ide")) {
 %>
-	<img src="C:/Users/219/Documents/GitHub/JSPproject/our/WebContent/img/ide1.PNG" alt="±³À° ÀÌ³ä">
-	<img src="C:/Users/219/Documents/GitHub/JSPproject/our/WebContent/img/ide2.PNG" alt="±³À° ÀÌ³ä">
+	<img src="D:/kim/web1_6/WebContent/img/ide1.PNG" alt="±³À° ÀÌ³ä">
+	<img src="D:/kim/web1_6/WebContent/img/ide2.PNG" alt="±³À° ÀÌ³ä">
 <%
 	}else if(subMenu.equals("simbol")) {
 %>
-	<img src="C:/Users/219/Documents/GitHub/JSPproject/our/WebContent/img/simbol.PNG" alt="´ëÇÐ ½Éº¼">
+	<img src="D:/kim/web1_6/WebContent/img/simbol.PNG" alt="´ëÇÐ ½Éº¼">
 	
 <%
 	}else if(subMenu.equals("road")) {
 %>
-	<img src="C:/Users/219/Documents/GitHub/JSPproject/our/WebContent/img/road.PNG" alt="¿À½Ã´Â ±æ">
+	<img src="D:/kim/web1_6/WebContent/img/road.PNG" alt="¿À½Ã´Â ±æ">
 <%
 	}
 %>

@@ -36,7 +36,7 @@ ResultSet rs = null;
 
 try {
 
-String strSQL = "SELECT * FROM noti WHERE num = ?";
+String strSQL = "SELECT * FROM noti6 WHERE num = ?";
 pstmt = conn.prepareStatement(strSQL);
 pstmt.setInt(1, Integer.parseInt(num));
 
@@ -96,7 +96,7 @@ String filename = rs.getString("filename");
 %>
 	<TR bgcolor='ededed'>
 		<TD align='center'>
-		<img src=<%="D:/younggun/db7_1/WebContent/img/" + filename %> width="400" height="400"></TD>
+		<img src=<%="D:/kim/web1_6/WebContent/img/" + filename %> width="400" height="400"></TD>
 	</TR>
 	<TR>
 <%
@@ -136,7 +136,7 @@ String filename = rs.getString("filename");
 </TABLE>
 
 <%
-strSQL = "UPDATE tblboard SET readcount=readcount+1 WHERE num = ?";
+strSQL = "UPDATE noti6 SET readcount=readcount+1 WHERE num = ?";
 pstmt = conn.prepareStatement(strSQL);
 pstmt.setInt(1, Integer.parseInt(num));
 pstmt.executeUpdate();
@@ -177,7 +177,7 @@ pstmt.executeUpdate();
 
 <%
 Statement stmt = conn.createStatement();
-String strSQL = "SELECT * FROM tblboardplus WHERE id = " + num;
+String strSQL = "SELECT * FROM comment6 WHERE id = " + num;
 rs = stmt.executeQuery(strSQL); 
 
 while(rs.next()){ 

@@ -26,7 +26,7 @@ if(cookie != null) {
 }
 
 String realFolder = "";
-String savePath = "D:/younggun/db7_1/WebContent/img";
+String savePath = "D:/kim/web1_6/WebContent/img";
 int sizeLimit = 5 * 1024 * 1024; // 최대 업로드 파일 크기 5MB(메가)로 제한
 
 String encType = "euc-kr";
@@ -59,7 +59,7 @@ indate = indate + Integer.toString(dateIn.get(Calendar.HOUR_OF_DAY)) + ":";
 indate = indate + Integer.toString(dateIn.get(Calendar.MINUTE)) + ":";
 indate = indate + Integer.toString(dateIn.get(Calendar.SECOND));
 
-String strSQL = "SELECT Max(num) FROM noti";
+String strSQL = "SELECT Max(num) FROM noti6";
 ResultSet rs = stmt.executeQuery(strSQL);
 int num = 1;
 
@@ -68,7 +68,7 @@ if (!rs.wasNull()){
 	num = rs.getInt(1) + 1;	
 }
 	
-strSQL ="INSERT INTO noti (num, name, email, title, contents, writedate, readcount, filename)";
+strSQL ="INSERT INTO noti6 (num, name, email, title, contents, writedate, readcount, filename)";
 strSQL = strSQL +  "VALUES('" + num + "', '" + name + "', '" + email + "',";
 strSQL = strSQL +  "'" + title + "', '" + contents + "', '" + indate + "', ' 0 ', '" + fileName + "')";
 stmt.executeUpdate(strSQL);
