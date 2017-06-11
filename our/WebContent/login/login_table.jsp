@@ -20,7 +20,7 @@
 		Statement stmt = null ;
 	  
 		String sql = "create table user6( ";
-		 sql = sql+ "id varchar(20), ";
+		 sql = sql+ "id varchar(20) primary key, ";
 	     sql = sql+ "name varchar(20), ";
 	     sql = sql+ "pass varchar(20), ";
 	     sql = sql+ "juminnum1 char(6), ";

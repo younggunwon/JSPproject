@@ -69,7 +69,7 @@ if(startRow < 0) {
 
 %>
 
-<center><font size='3'><b> 대학행사 게시판 </b></font></TD>
+<center><font size='3'><b> 취업정보 게시판 </b></font></TD>
                                     
 <TABLE border='0' width='600' cellpadding='0' cellspacing='0'>
 	<TR>

@@ -72,7 +72,7 @@
 	<TD width="100%" height="100%" align="center">
 <Table border = '0'>
 	<TR>
-		<TD  width="300" height="200">
+		<TD  width="300" height="200" bgcolor="#AAAAAA">
 			<%try{
 				if(session.getAttribute("LOGIN").equals("YES")) { %>
 			<jsp:include page="login/login_success.jsp" flush="false"></jsp:include>
@@ -87,12 +87,12 @@
 			}	%>
 			
 		</TD>
-		<TD  width="700" height="200">
+		<TD  width="700" height="200" bgcolor="#00CCCC">
 			<jsp:include page="menu/menu.jsp" flush="false"></jsp:include>
 		</TD>
 	</TR>
 	<TR>
-		<TD  width="300" height="600">
+		<TD  width="300" height="600" bgcolor="#CCCC00">
 			<jsp:include page="menu/subMenu.jsp" flush="false">
 				<jsp:param name="menu" value="<%=menu%>" />
 			</jsp:include>
