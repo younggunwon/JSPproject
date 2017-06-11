@@ -54,9 +54,9 @@ String strSQL = "";
 ResultSet rs = null;
 
 if (key==null || keyword==null || key.equals("null") || keyword.equals("null")){
-	strSQL = "SELECT MAX(num) FROM noti6";	//tblboard의 모든 글을 카운트 한다.
+	strSQL = "SELECT MAX(num) FROM noti_food6";	//tblboard의 모든 글을 카운트 한다.
 }else{
-	strSQL = "SELECT count(*) FROM noti6 WHERE " + key + " like '%" + keyword + "%'";
+	strSQL = "SELECT count(*) FROM noti_food6 WHERE " + key + " like '%" + keyword + "%'";
 }
 rs = stmt.executeQuery(strSQL);
 rs.next();
@@ -70,7 +70,7 @@ if(startRow < 0) {
 
 %>
 
-<center><font size='3'><b> 학사일정 게시판 </b></font></TD>
+<center><font size='3'><b> 대학행사 게시판 </b></font></TD>
                                     
 <TABLE border='0' width='600' cellpadding='0' cellspacing='0'>
 	<TR>
@@ -91,10 +91,10 @@ if(startRow < 0) {
 <%
 if(lastRow > 0) {	//글의 개수가 0보다 크면 글 보여주기
 	if(key==null || keyword==null || key.equals("null") || keyword.equals("null")){
-		strSQL = "SELECT * FROM noti6 WHERE num BETWEEN " + startRow + " and " + endRow + " ORDER BY num DESC";
+		strSQL = "SELECT * FROM noti_food6 WHERE num BETWEEN " + startRow + " and " + endRow + " ORDER BY num DESC";
 		rs = stmt.executeQuery(strSQL);
 	} else {
-		strSQL = "SELECT * FROM noti6 WHERE " + key + " like '%" + keyword + "%' ORDER BY num DESC";
+		strSQL = "SELECT * FROM noti_food6 WHERE " + key + " like '%" + keyword + "%' ORDER BY num DESC";
 		rs = stmt.executeQuery(strSQL);
 	}
 
@@ -116,7 +116,7 @@ if(lastRow > 0) {	//글의 개수가 0보다 크면 글 보여주기
 <%	
 			if(session.getAttribute("LOGIN").equals("YES")) {
 %>
-			<a href="main.jsp?menu=noti&subMenu=calendar&action=read&num=<%=listnum %>">
+			<a href="main.jsp?menu=noti&subMenu=food&action=read&num=<%=listnum %>">
 <% 
 			}
 %>
@@ -169,7 +169,7 @@ if(lastRow > 0) {
 
 	if(currentPage > 1) {	//현재 페이지가 1보다 클 경우만
 %>
-		<a href="main.jsp?menu=noti&subMenu=calendar&pageNum=<%=currentPage-1%>">[이전]</a>	
+		<a href="main.jsp?menu=noti&subMenu=food&pageNum=<%=currentPage-1%>">[이전]</a>	
 <%	
 	}
 	for(i=setPage; i<=lastPage; i++) {	//페이지 개수만큼 나타내기
@@ -179,13 +179,13 @@ if(lastRow > 0) {
 <%		
 		}else{
 %>
-		<a href="main.jsp?menu=noti&subMenu=calendar&pageNum=<%=i%>">[<%=i%>]</a>
+		<a href="main.jsp?menu=noti&subMenu=food&pageNum=<%=i%>">[<%=i%>]</a>
 <%
 		}
 	}
 	if(lastPage > currentPage) {	//현재 페이지가 마지막 페이지보다 작을 경우에만
 %>
-		<a href="main.jsp?menu=noti&subMenu=calendar&pageNum=<%=currentPage+1%>">[다음]</a>
+		<a href="main.jsp?menu=noti&subMenu=food&pageNum=<%=currentPage+1%>">[다음]</a>
 <%
 	}
 }
@@ -204,7 +204,7 @@ if(lastRow > 0) {
 			<TABLE border='0' cellpadding='0' cellspacing='0'>
 			<FORM Name='Form' Method='POST' Action='main.jsp' OnSubmit='return SearchCheck()'>
 			<input type='hidden' name='menu' value='noti'>
-			<input type='hidden' name='subMenu' value='calendar'>
+			<input type='hidden' name='subMenu' value='food'>
 			<TR>
 				<TD align='right'>
 				<select name='key' style="background-color:cccccc;">
@@ -227,7 +227,7 @@ if(lastRow > 0) {
 
 		<TD align='right'>
 <%if(session.getAttribute("LOGIN").equals("YES")) { %>
-		<a href="main.jsp?menu=noti&subMenu=calendar&action=write">[등록]</a>
+		<a href="main.jsp?menu=noti&subMenu=food&action=write">[등록]</a>
 <%} else { %>
 		[등록]
 <%} %>

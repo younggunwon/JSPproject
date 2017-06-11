@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
 <%@ page import = "java.sql.*" %>
 <% request.setCharacterEncoding("euc-kr"); %>
  
@@ -20,17 +19,14 @@
 		Connection con = null;
 		Statement stmt = null ;
 	  
-		String sql = "create table noti6( ";
-		 sql = sql+ "id varchar(20),";
-		 sql = sql+ "num int auto_increment primary key,";
-	     sql = sql+ "name varchar(50),";
-	     sql = sql+ "title varchar(50),";
-	     sql = sql+ "contents varchar(500),";
-	     sql = sql+ "writedate varchar(50),";
-	     sql = sql+ "readcount int, ";
-	     sql = sql+ "filename varchar(200));";
-	     
-		try{  	
+		String sql = "create table free_comment6( ";
+		 sql = sql+ "num int auto_increment primary key, ";
+		 sql = sql+ "id varchar(20), ";
+		 sql = sql+ "maker varchar(20),";
+		 sql = sql+ "name varchar(20), ";
+	     sql = sql+ "contents varchar(500), ";
+	     sql = sql+ "writedate varchar(50)) ";
+		try{
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, user, pwd); 
 			stmt= con.createStatement();
@@ -50,6 +46,7 @@
 			}
 		}
 		%>
+
 
 
 </body>

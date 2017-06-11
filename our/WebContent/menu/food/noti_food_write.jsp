@@ -61,7 +61,7 @@ indate = indate + Integer.toString(dateIn.get(Calendar.DATE));
  	</TR>
 </TABLE>
 
-<FORM Name='Write' Action='writeNoti_input.jsp' Method='post' Enctype='multipart/form-data' OnSubmit='return Check()'>
+<FORM Name='Write' Action='menu/food/noti_food_write_input.jsp' Method='post' Enctype='multipart/form-data' OnSubmit='return Check()'>
 
 <TABLE border='0' width='600' cellpadding='2' cellspacing='2'>
 

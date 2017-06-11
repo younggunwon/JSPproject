@@ -7,6 +7,38 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<TABLE>
+	<TR>
+		<TD>
+<% request.setCharacterEncoding("euc-kr"); %>
+<% 	
+	String action = request.getParameter("action");
+	String subMenu = request.getParameter("subMenu");
+	String num = request.getParameter("num");
+	if(subMenu.equals("free")) {
+		if(action.equals("read")) {
+			if(!num.equals("null")) {
+%>
+			<jsp:include page="free/free_read.jsp?num=<%=num %>" flush="false"></jsp:include>	
+<%
+			}
+		} else if(action.equals("write")) {
+%>
+			<jsp:include page="free/free_write.jsp" flush="false"></jsp:include>
+<%
+		} else if(action.equals("reset")) {
+%>
+			<jsp:include page="free/free_reset.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else if(action.equals("delete")) {
+%>
+			<jsp:include page="free/free_delete.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else {
+%>
+			<jsp:include page="free/free.jsp" flush="false"></jsp:include>	
+<%		}
+	}
+%>
 </body>
 </html>

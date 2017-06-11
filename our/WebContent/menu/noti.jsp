@@ -10,31 +10,104 @@
 <TABLE>
 	<TR>
 		<TD>
+<% request.setCharacterEncoding("euc-kr"); %>
 <% 	
+	String action = request.getParameter("action");
 	String subMenu = request.getParameter("subMenu");
 	String num = request.getParameter("num");
 	if(subMenu.equals("calendar")) {
-		if(num.equals("null")) {
+		if(action.equals("read")) {
+			if(!num.equals("null")) {
 %>
-		<jsp:include page="noti/noti_calendar.jsp" flush="false"></jsp:include>
+			<jsp:include page="noti/noti_calendar_read.jsp?num=<%=num %>" flush="false"></jsp:include>	
+<%
+			}
+		} else if(action.equals("write")) {
+%>
+			<jsp:include page="noti/noti_calendar_write.jsp" flush="false"></jsp:include>
+<%
+		} else if(action.equals("reset")) {
+%>
+			<jsp:include page="noti/noti_calendar_reset.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else if(action.equals("delete")) {
+%>
+			<jsp:include page="noti/noti_calendar_delete.jsp?num=<%=num %>" flush="false"></jsp:include>
 <%
 		} else {
 %>
-		<jsp:include page="noti/noti_calendar_writing.jsp?<%=num %>" flush="false"></jsp:include>	
-<%
-		}
+			<jsp:include page="noti/noti_calendar.jsp" flush="false"></jsp:include>	
+<%		}
 	}else if(subMenu.equals("event")) {
+		if(action.equals("read")) {
+			if(!num.equals("null")) {
 %>
-		<jsp:include page="noti/noti_event.jsp" flush="false"></jsp:include>
+			<jsp:include page="event/noti_event_read.jsp?num=<%=num %>" flush="false"></jsp:include>	
 <%
+			}
+		} else if(action.equals("write")) {
+%>
+			<jsp:include page="event/noti_event_write.jsp" flush="false"></jsp:include>
+<%
+		} else if(action.equals("reset")) {
+%>
+			<jsp:include page="event/noti_event_reset.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else if(action.equals("delete")) {
+%>
+			<jsp:include page="event/noti_event_delete.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else {
+%>
+			<jsp:include page="event/noti_event.jsp" flush="false"></jsp:include>	
+<%		}
 	}else if(subMenu.equals("job")) {
+		if(action.equals("read")) {
+			if(!num.equals("null")) {
 %>
-		<jsp:include page="noti/noti_job.jsp" flush="false"></jsp:include>
+			<jsp:include page="job/noti_job_read.jsp?num=<%=num %>" flush="false"></jsp:include>	
 <%
+			}
+		} else if(action.equals("write")) {
+%>
+			<jsp:include page="job/noti_job_write.jsp" flush="false"></jsp:include>
+<%
+		} else if(action.equals("reset")) {
+%>
+			<jsp:include page="job/noti_job_reset.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else if(action.equals("delete")) {
+%>
+			<jsp:include page="job/noti_job_delete.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else {
+%>
+			<jsp:include page="job/noti_job.jsp" flush="false"></jsp:include>	
+<%		}
 	}else if(subMenu.equals("food")) {
+		if(action.equals("read")) {
+			if(!num.equals("null")) {
 %>
-		<jsp:include page="noti/noti_food.jsp" flush="false"></jsp:include>
+			<jsp:include page="food/noti_food_read.jsp?num=<%=num %>" flush="false"></jsp:include>	
 <%
+			}
+		} else if(action.equals("write")) {
+%>
+			<jsp:include page="food/noti_food_write.jsp" flush="false"></jsp:include>
+<%
+		} else if(action.equals("reset")) {
+%>
+			<jsp:include page="food/noti_food_reset.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else if(action.equals("delete")) {
+%>
+			<jsp:include page="food/noti_food_delete.jsp?num=<%=num %>" flush="false"></jsp:include>
+<%
+		} else {
+%>
+			<jsp:include page="food/noti_food.jsp" flush="false"></jsp:include>	
+<%		}
+
 	}
 %>
 		</TD>

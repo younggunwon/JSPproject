@@ -20,7 +20,7 @@
 		Connection con = null;
 		Statement stmt = null ;
 	  
-		String sql = "create table noti6( ";
+		String sql = "create table noti_event6( ";
 		 sql = sql+ "id varchar(20),";
 		 sql = sql+ "num int auto_increment primary key,";
 	     sql = sql+ "name varchar(50),";

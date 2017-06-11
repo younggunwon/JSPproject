@@ -1,3 +1,4 @@
+<%@page import="javax.websocket.Session"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
         <%@page import="java.net.URLDecoder"%>
@@ -14,14 +15,19 @@
 
 <%
 String myName = "";
+String myId = "";
 Cookie cookie[] = request.getCookies();
 if(cookie != null) {
 	for(int i = 0; i < cookie.length; i++) {
 		if(cookie[i].getName().equals("name")) {
 			myName = URLDecoder.decode(cookie[i].getValue(), "utf-8");
+		} else if(cookie[i].getName().equals("id")) {
+			myId = URLDecoder.decode(cookie[i].getValue(), "utf-8");
 		}
 	}
 }
+String subAction = request.getParameter("subAction");
+String commentNum = request.getParameter("commentNum");
 
 String driverName = "org.gjt.mm.mysql.Driver";
 String dbURL = "jdbc:mysql://localhost:3306/test1";
@@ -36,19 +42,21 @@ ResultSet rs = null;
 
 try {
 
-String strSQL = "SELECT * FROM noti6 WHERE num = ?";
+String strSQL = "SELECT * FROM free_free6 WHERE num = ?";
 pstmt = conn.prepareStatement(strSQL);
 pstmt.setInt(1, Integer.parseInt(num));
 
 rs = pstmt.executeQuery();
 rs.next();
 
+String id = rs.getString("id");
 String name = rs.getString("name");
 String title = rs.getString("title");
 String contents = rs.getString("contents").trim();
 String writedate = rs.getString("writedate");
 int readcount = rs.getInt("readcount");
 String filename = rs.getString("filename");
+
 %>
 
 <center><font size='3'><b> 게시판 </b></font>
@@ -92,7 +100,7 @@ String filename = rs.getString("filename");
 
 <TABLE border='0' cellspacing=5 cellpadding=10 width='600'>
 <% 
-	if(!filename.equals("null")) { 
+	if(!filename.equals("null") && filename != null && !filename.equals("")) { 
 %>
 	<TR bgcolor='ededed'>
 		<TD align='center'>
@@ -125,18 +133,29 @@ String filename = rs.getString("filename");
 <TABLE border='0' width='600'>
 	<TR>
 		<TD align='left'>
-			<a href="modify_pass.jsp?num=<%=num %>">[수정하기]</a>
-			<a href="delete_pass.jsp?num=<%=num %>">[삭제하기]</a>
+		<%
+			if(myId.equals(id)) {
+		%>
+			<a href="main.jsp?menu=free&subMenu=free&action=reset&num=<%=num %>">[수정하기]</a>
+			<a href="main.jsp?menu=free&subMenu=free&action=delete&num=<%=num %>">[삭제하기]</a>
+		<%
+			} else {
+		%>
+			[수정하기]
+			[삭제하기]
+		<%
+			}
+		%>
 		</TD>
 
 		<TD align='right'>
-			<a href="javascript:history.back()">[목록보기]</a>
+			<a href="main.jsp?menu=free&subMenu=free">[목록보기]</a>
  		</TD>
 	</TR>
 </TABLE>
 
 <%
-strSQL = "UPDATE noti6 SET readcount=readcount+1 WHERE num = ?";
+strSQL = "UPDATE free_free6 SET readcount=readcount+1 WHERE num = ?";
 pstmt = conn.prepareStatement(strSQL);
 pstmt.setInt(1, Integer.parseInt(num));
 pstmt.executeUpdate();
@@ -147,26 +166,31 @@ pstmt.executeUpdate();
    	out.print("JSP에러 " + ex.toString());
 }finally{  
 }
+
+Calendar dateIn = Calendar.getInstance();
+String indate = Integer.toString(dateIn.get(Calendar.YEAR)) + "년";
+indate = indate + Integer.toString(dateIn.get(Calendar.MONTH)+1) + "월";
+indate = indate + Integer.toString(dateIn.get(Calendar.DATE)) + "일";
+indate = indate + Integer.toString(dateIn.get(Calendar.HOUR_OF_DAY)) + "시";
+indate = indate + Integer.toString(dateIn.get(Calendar.MINUTE)) + "분";
+indate = indate + Integer.toString(dateIn.get(Calendar.SECOND)) + "초";
+
+if(session.getAttribute("LOGIN").equals("YES")) {
 %>
-<FORM Name='Plus' Action='plus_input.jsp' Method='post'>
+
+<FORM Name='Plus' Action='menu/free/free_comment_input.jsp' Method='post'>
 
 <TABLE border='0' width='600' cellpadding='2' cellspacing='2'>
-<input type='hidden' name='num' value='<%=num %>'>
-	<TR>
-		<TD width='100' bgcolor='cccccc'>
-			<font size='2'><center><b>작성자</b></center></font> 
-		</TD>
-		<TD>
-			<%=myName %>
-		</TD>
-	</TR>
-	<TR>
+<input type='hidden' name='id' value='<%=num %>'>
+<input type='hidden' name='name' value='<%=myName %>'>
+<input type='hidden' name='writeDate' value='<%=indate %>'>
+<input type='hidden' name='maker' value='<%=myId %>'>
 		<TD bgcolor='cccccc'>
 			<font size='2'><center><b>한줄댓글</b></center></font>
 		</TD>
 		<TD>
          		<font size='2'>
-         		<input type='text' size='62' name='plus_contents' >
+         		<input type='text' size='62' name='contents' >
          		</font>
       		</TD>
       		<TD>
@@ -174,23 +198,62 @@ pstmt.executeUpdate();
       		</TD>
 	</TR>
 </TABLE>
+</FORM>
 
 <%
+} else {
+	
+}
 Statement stmt = conn.createStatement();
-String strSQL = "SELECT * FROM comment6 WHERE id = " + num;
+String strSQL = "SELECT * FROM free_comment6 WHERE id = '" + num + "'";
 rs = stmt.executeQuery(strSQL); 
 
 while(rs.next()){ 
+	int getCommentNum = rs.getInt("num");
+	String getCommentId = rs.getString("maker");
 %>
 <TABLE border='0' width='600' cellpadding='2' cellspacing='2'>
 	<TR bgcolor='cccccc'>     
 		 <TD>
 		 <font size=2 color='black'>
 		 	<b><%=rs.getString("name")%> :</b>
-		 	<%=rs.getString("contents")%> 
+<% 
+			if(subAction.equals("comment_reset") && commentNum.equals(Integer.toString(getCommentNum)) ) {
+%>
+				<FORM Name='reset' Action='menu/free/free_comment_reset.jsp' Method='post'>
+					<input type="hidden" name='commentNum' value='<%=getCommentNum %>'>
+					<input type="hidden" name='id' value='<%=num %>'>
+					<input type='text' name='contents' value='<%=rs.getString("contents")%>' size="60">
+					<input type='button' value='취소' onclick='history.back()'>
+					<input type='submit' value='수정'>
+				</FORM>
+<%					
+			} else {
+%>
+		 	<%=rs.getString("contents")%>
 		 	(<%=rs.getString("writedate")%>)
-		 </font>
-		 </TD>          
+		 	</font>
+		 </TD>
+		 <TD align="right" width="80">
+		<%
+			if(myId.equals(getCommentId)) {
+		%>
+		 	<a href="main.jsp?menu=free&subMenu=free&action=read&num=<%=num %>&subAction=comment_reset&commentNum=<%=getCommentNum %>">[수정하기]</a>
+		 	<a href="menu/free/free_comment_delete.jsp?commentNum=<%=getCommentNum %>&num=<%=num %>">[삭제하기]</a>
+		<%
+			} else {
+		%>
+			[수정하기]
+			[삭제하기]
+		<%
+			}
+		%>
+		 </TD>
+<% 			
+			}
+%> 
+		 	
+		 
 	</TR> 
 </TABLE>   	
 <%     

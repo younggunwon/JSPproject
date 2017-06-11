@@ -1,3 +1,4 @@
+<%@page import="connectDB.ConnectDatabase"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,11 +8,12 @@
 <title>Insert title here</title>
 <SCRIPT LANGUAGE="JavaScript">
 function checkId(){
-	opener.document.Member_Input.overlap.value = "사용 가능";	//에러가 날 수 있음
+	opener.document.Member_Input.overlap.value = "사용 가능";
 	window.close();
 }
 
 function cancel(){
+	opener.document.Member_Input.overlap.value = "ID 중복검사";
 	window.close();
 }
 </SCRIPT>
@@ -19,6 +21,7 @@ function cancel(){
 <body>
 
 <%@ page import = "java.sql.*" %>
+<% request.setCharacterEncoding("euc-kr"); %>
 
 <TABLE border='1' width=250>
 	
@@ -41,19 +44,10 @@ if (id == ""){
 
 <%
 } else {
-	String driverName = "org.gjt.mm.mysql.Driver";
-	String dbURL = "jdbc:mysql://localhost:3306/test1";
+	ConnectDatabase cd = new ConnectDatabase();
+	int result = cd.checkId(id);
 
-	Class.forName(driverName);
-	Connection conn = DriverManager.getConnection(dbURL,"root","dongyang");
-
-	Statement stmt = conn.createStatement();
-	
-	String strSQL = "SELECT id FROM user6 where id='" + id + "'";
-	ResultSet rs = stmt.executeQuery(strSQL);
-
-
-	if (!rs.next()) {
+	if (result == 2) {
 %>
 <TR>
 	<TD align='center' bgcolor='cccccc' colspan="2">
@@ -69,7 +63,7 @@ if (id == ""){
 	</TD>
 </TR>
 <%
-	} else {
+	} else if(result == 1) {
 %>
 <TR>
 	<TD align='center' bgcolor='cccccc'>
@@ -78,15 +72,15 @@ if (id == ""){
 </TR>
 <TR>
 	<TD align='center'>
-	<a href=javascript:close()>[닫 기]</a>
+	<input type="button" value="닫기" onClick="cancel()">
 	</TD>
 </TR>
 <%
+	} else if(result == 0){
+%>
+	DB연동 오류입니다.
+<%	
 	}
-
-	rs.close();
-	stmt.close();
-	conn.close();
 }
 %>
 
